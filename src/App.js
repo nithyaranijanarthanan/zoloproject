@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Header from './Header';
+import Home from './Home';
+import SearchResults from './SearchResults';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [state, setState] = useState('');
+    const [city, setCity] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
+    const [currentView, setCurrentView] = useState('home');
+
+    const handleSearchSubmit = () => {
+        if (searchQuery) {
+            setCurrentView('searchResults');
+        } else {
+            setCurrentView('home');
+        }
+    };
+
+    return (
+        <div className="container">
+            <Header
+                state={state}
+                city={city}
+                onStateChange={setState}
+                onCityChange={setCity}
+                searchQuery={searchQuery}
+                onSearch={setSearchQuery}
+                onSearchSubmit={handleSearchSubmit}
+            />
+            {currentView === 'home' && <Home />}
+            {currentView === 'searchResults' && <SearchResults searchQuery={searchQuery} />}
+        </div>
+    );
+};
 
 export default App;
+
