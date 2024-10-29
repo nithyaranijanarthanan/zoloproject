@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from './Header';
-import Home from './Home';
+
 import SearchResults from './SearchResults';
 import './App.css';
 
@@ -29,7 +29,7 @@ const App = () => {
                 onSearch={setSearchQuery}
                 onSearchSubmit={handleSearchSubmit}
             />
-            {currentView === 'home' && <Home />}
+          
             {currentView === 'searchResults' && <SearchResults searchQuery={searchQuery} />}
         </div>
     );
