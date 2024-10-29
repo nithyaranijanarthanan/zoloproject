@@ -18,12 +18,13 @@ nav {
   align-items: center;
   justify-content: space-between;
   border-radius: 25px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow items to wrap */
 }
 
 nav h1 {
   color: white;
   margin: 0;
+  flex: 1; /* Allow header to take available space */
 }
 
 nav button {
@@ -31,26 +32,31 @@ nav button {
   color: #4CAF50;
   border: none;
   padding: 10px 15px;
-  margin-left: 10px;
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s;
+  margin: 0 10px; /* Add space on both sides */
 }
 
 nav button:hover {
   background-color: #e0e0e0;
 }
 
+/* Ensuring inputs and selects don't overflow */
 nav select,
 nav input {
   padding: 10px;
-  margin-left: 10px;
+  margin: 5px 0; /* Adjusted margin */
   border: 1px solid #ccc;
   border-radius: 5px;
+  flex: 1; /* Allow to grow */
+  min-width: 0; /* Important to prevent overflow */
+  max-width: 100%; /* Prevent overflow */
+  margin: 0 10px; /* Add space on both sides */
 }
 
 nav input {
-  width: 200px;
+  width: 100%; /* Full width for responsiveness */
 }
 
 /* Search Results Styling */
@@ -102,8 +108,8 @@ img:hover {
 @media (max-width: 600px) {
   /* Header */
   nav {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column; /* Stack vertically */
+    align-items: stretch; /* Allow full width */
     padding: 10px 15px;
   }
 
@@ -115,18 +121,24 @@ img:hover {
   nav select,
   nav input,
   nav button {
-    width: 100%;
-    margin: 5px 0;
+    width: 100%; /* Full width */
+    margin: 5px 0; /* Space between elements */
+  }
+
+  /* Preventing overflow */
+  nav input {
+    min-width: 0; /* Prevent input from overflowing */
+    box-sizing: border-box; /* Include padding and border in width */
   }
 
   /* Search Results */
   .card-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Single column for mobile */
   }
 
   img, .hotel-image {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Ensure images are full-width */
+    height: auto; /* Maintain aspect ratio */
   }
 }
 
@@ -134,19 +146,24 @@ img:hover {
 @media (min-width: 601px) and (max-width: 900px) {
   /* Header */
   nav {
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: row; /* Keep items in a row */
+    justify-content: space-between; /* Space between items */
     padding: 10px 20px;
   }
 
   nav h1 {
-    flex: 1;
+    flex: 1; /* Allow header to take available space */
     text-align: left;
   }
 
   nav select,
   nav input {
-    max-width: 150px;
+    max-width: 150px; /* Limit width for tablets */
+    margin: 0 10px; /* Add space on both sides */
+  }
+
+  nav button {
+    margin: 0 10px; /* Add space on both sides */
   }
 
   /* Search Results */
@@ -162,21 +179,19 @@ img:hover {
 
 /* Larger screens */
 @media (min-width: 901px) {
-  #a {
-    width: 100%;
-    height: auto;
-  }
-
-  nav h1 {
-    margin-right: auto;
-  }
-
   nav select,
   nav input {
-    width: auto;
+    width: auto; /* Default width for larger screens */
+    margin: 0 10px; /* Add space on both sides */
+  }
+
+  nav button {
+    margin: 0 10px; /* Add space on both sides */
   }
 
   .card-container {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 }
+
+

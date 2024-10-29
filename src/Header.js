@@ -39,11 +39,11 @@ const Header = ({ state, city, onStateChange, onCityChange, searchQuery, onSearc
                 ))}
             </select>
             <input
-                type="text"
-                placeholder="Search Area"
-                value={searchQuery}
-                onChange={(e) => onSearch(e.target.value)} // Handle area input
-            />
+    type="text"
+    placeholder="Search Area" // Placeholder text
+    value={searchQuery}
+    onChange={(e) => onSearch(e.target.value)} // Handle area input
+/>
             <button onClick={handleSearchSubmit}>Search</button>
         </nav>
     );
